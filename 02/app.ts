@@ -1,4 +1,5 @@
 // Day 2
+import { Socket } from "dgram";
 import * as fs from "fs";
 
 const getData = (fileName: string): string[] => {
@@ -6,61 +7,60 @@ const getData = (fileName: string): string[] => {
   return fileContent.split("\n");
 };
 
-const getScore = (opponent: string, me: string): number => {
-  let myScore = 0;
+const getScore = (opponent: string, result: string): number => {
   let win = 6;
   let draw = 3;
   let loss = 0;
+  let rock = 1;
+  let paper = 2;
+  let scissors = 3;
 
-  // I play Rock
-  if (me === "X") {
-    myScore = 1;
-
+  // I want to lose
+  if (result === "X") {
     if (opponent == "A") {
-      return myScore + draw;
+      // I play scissors (3)
+      return scissors + loss;
     }
     if (opponent == "B") {
-      return myScore + loss;
+      // I play rock
+      return rock + loss;
     }
     if (opponent == "C") {
-      return myScore + win;
+      // I play paper
+      return paper + loss;
     }
     throw new Error(`Opponent play ${opponent} is not valid`);
   }
 
-  // I play Paper
-  if (me === "Y") {
-    myScore = 2;
-
+  // I want to draw
+  if (result === "Y") {
     if (opponent == "A") {
-      return myScore + win;
+      return rock + draw;
     }
     if (opponent == "B") {
-      return myScore + draw;
+      return paper + draw;
     }
     if (opponent == "C") {
-      return myScore + loss;
+      return scissors + draw;
     }
     throw new Error(`Opponent play ${opponent} is not valid`);
   }
 
-  // I play Scissors
-  if (me === "Z") {
-    myScore = 3;
-
+  // I want to win
+  if (result === "Z") {
     if (opponent == "A") {
-      return myScore + loss;
+      return paper + win;
     }
     if (opponent == "B") {
-      return myScore + win;
+      return scissors + win;
     }
     if (opponent == "C") {
-      return myScore + draw;
+      return rock + win;
     }
     throw new Error(`Opponent play ${opponent} is not valid`);
   }
 
-  throw new Error(`My play ${me} is not valid`);
+  throw new Error(`Result ${result} is not valid`);
 };
 
 // read input file
@@ -82,5 +82,4 @@ data.forEach((item) => {
 });
 
 console.log(`Total score: ${totalScore}`);
-
 console.log("** END **");
