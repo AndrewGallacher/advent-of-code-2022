@@ -1,3 +1,4 @@
+// Day 1
 import * as fs from "fs";
 
 const getData = (fileName: string): string[] => {
