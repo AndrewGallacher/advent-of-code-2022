@@ -1,5 +1,4 @@
 // Day 2
-import { Socket } from "dgram";
 import * as fs from "fs";
 
 const getData = (fileName: string): string[] => {
