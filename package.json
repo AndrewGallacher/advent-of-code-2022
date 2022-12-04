@@ -7,7 +7,8 @@
     "@types/node": "^18.11.10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cd 04 && tsc ./app.ts && node ./app.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
