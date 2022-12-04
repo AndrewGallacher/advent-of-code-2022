@@ -1,10 +1,10 @@
 // app.ts
 import { getData } from "../src/common";
-import { template as t1 } from "./Part1";
-import { template as t2 } from "./Part2";
+import { Day04Part1 } from "./Part1";
+import { Day04Part2 } from "./Part2";
 
-const part1 = new t1.Part1();
-const part2 = new t2.Part2();
+const part1 = new Day04Part1();
+const part2 = new Day04Part2();
 
 // Get the data
 const sample = getData("sample");

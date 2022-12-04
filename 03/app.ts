@@ -1,6 +1,5 @@
-// Day ?
+// Day 3
 import * as fs from "fs";
-import { toASCII } from "punycode";
 
 const getData = (fileName: string): string[] => {
   let fileContent = fs.readFileSync(fileName, "utf8");
