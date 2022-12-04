@@ -1,6 +1,6 @@
 // Day 4 (Part 1)
 import { IPuzzle } from "../src/IPuzzle";
-import { overlaps } from "./overlaps";
+import { fullOverlaps as overlaps } from "./overlaps";
 import { parse } from "./parser";
 
 export class Day04Part1 implements IPuzzle {
