@@ -2,7 +2,7 @@
 import { IPuzzle } from "../src/IPuzzle";
 import { getPriority } from "./priority";
 
-export class Day03Part2 implements IPuzzle {
+export class Day03Part2 implements IPuzzle<number> {
   solve(input: string[]): number {
     const groups: string[][] = [];
     let currentGroup: string[] = [];

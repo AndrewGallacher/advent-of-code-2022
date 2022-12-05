@@ -1,3 +1,3 @@
-export interface IPuzzle {
-  solve(input: string[]): number;
+export interface IPuzzle<T> {
+  solve(data: string[]): T;
 }

@@ -2,7 +2,7 @@
 import { IPuzzle } from "../src/IPuzzle";
 import { getPriority } from "./priority";
 
-export class Day03Part1 implements IPuzzle {
+export class Day03Part1 implements IPuzzle<number> {
   solve(input: string[]): number {
     let i = 0;
     let totalPriority = 0;

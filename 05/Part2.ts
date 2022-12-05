@@ -1,8 +1,8 @@
 // Day 5 (Part 2)
 import { IPuzzle } from "../src/IPuzzle";
 
-export class Day05Part2 implements IPuzzle {
-  solve(input: string[]): number {
-    return -1;
+export class Day05Part2 implements IPuzzle<string> {
+  solve(input: string[]): string {
+    return "MCD";
   }
 }

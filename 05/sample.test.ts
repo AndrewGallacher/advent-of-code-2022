@@ -9,11 +9,11 @@ const sample = getData("05/sample");
 describe("Day 5 sample", () => {
   test("part1", () => {
     const result = part1.solve(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe("CMZ");
   });
 
   test("part2", () => {
     const result = part2.solve(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe("MCD");
   });
 });
