@@ -15,7 +15,6 @@ export class Day05Part1 implements IPuzzle<string> {
     });
 
     let result = "";
-
     for (let i = 0; i < input.initialState.length; i++) {
       result = result + input.initialState[i].pop();
     }
