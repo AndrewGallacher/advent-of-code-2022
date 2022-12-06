@@ -1,10 +1,8 @@
-// Template (Part 2)
+// Day NN (Part 2)
 import { IPuzzle } from "../src/IPuzzle";
 
-export namespace template {
-  export class Part2 implements IPuzzle {
-    solve(input: string[]): number {
-      throw new Error("Method not implemented.");
-    }
+export class DayNNPart2 implements IPuzzle<any> {
+  solve(input: string[]): any {
+    throw new Error("Method not implemented.");
   }
 }

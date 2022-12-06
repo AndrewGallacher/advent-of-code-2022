@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mkdir $1
+ 
+for file in `ls XX`
+do
+    echo $file
+    sed "s/NN/$1/" XX/$file > $1/$file
+done
+
+touch $1/sample
+touch $1/input
