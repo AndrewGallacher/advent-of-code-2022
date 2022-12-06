@@ -2,8 +2,6 @@ import { Day5Input } from "./Day5Input";
 import { Instruction } from "./Instruction";
 
 export function parse(data: string[]): Day5Input {
-  console.log("--- PARSE START ---");
-
   const stack: string[] = [];
 
   let index = 0;
@@ -12,7 +10,6 @@ export function parse(data: string[]): Day5Input {
     stack.push(data[index]);
     index++;
   }
-  console.log(stack);
 
   const indexLine = data[index];
   const numberOfStacks = indexLine.split("  ").length;
@@ -25,7 +22,6 @@ export function parse(data: string[]): Day5Input {
 
   while (stack.length > 0) {
     const level = stack.pop();
-    console.log(level);
 
     let startIndex = 0;
     for (let column = 0; column < numberOfStacks; column++) {
@@ -40,8 +36,6 @@ export function parse(data: string[]): Day5Input {
     }
   }
 
-  console.log(initialState);
-
   // skip the blank line
   index++;
 
@@ -54,9 +48,6 @@ export function parse(data: string[]): Day5Input {
 
     index++;
   }
-  console.log(instructions);
-
-  console.log("--- PARSE END ---");
 
   return new Day5Input(initialState, instructions);
 }

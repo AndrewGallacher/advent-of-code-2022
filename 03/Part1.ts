@@ -7,13 +7,10 @@ export class Day03Part1 implements IPuzzle<number> {
     let i = 0;
     let totalPriority = 0;
     input.forEach((rucksack) => {
-      console.log(`Rucksack ${i}: ${rucksack}`);
       const itemCount = rucksack.length;
       const compartment1 = rucksack.substring(0, itemCount / 2);
       const compartment2 = rucksack.substring(itemCount / 2);
 
-      console.log(compartment1);
-      console.log(compartment2);
       i++;
 
       let commonType = "?";
@@ -24,7 +21,6 @@ export class Day03Part1 implements IPuzzle<number> {
       });
 
       const priority = getPriority(commonType);
-      console.log(`Common type ${commonType} has priority ${priority}`);
       totalPriority += priority;
     });
 

@@ -20,8 +20,6 @@ export class Day03Part2 implements IPuzzle<number> {
       }
     });
 
-    console.log(groups);
-
     let totalPriority = 0;
     groups.forEach((group) => {
       let commonType = "?";
@@ -34,7 +32,7 @@ export class Day03Part2 implements IPuzzle<number> {
       });
 
       const priority = getPriority(commonType);
-      console.log(`Common type ${commonType} has priority ${priority}`);
+
       totalPriority += priority;
     });
 
