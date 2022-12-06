@@ -1,6 +1,6 @@
-// Day 6 (Part 2)
+// Day 6 (Part 1)
 import { IPuzzle } from "../src/IPuzzle";
-import { PacketFinder } from "./PacketFInder";
+import { PacketFinder } from "./PacketFinder";
 
 export class Day06Part1 implements IPuzzle<number> {
   solve(data: string[]): number {
