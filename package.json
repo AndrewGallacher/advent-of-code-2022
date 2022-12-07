@@ -7,7 +7,7 @@
     "@types/node": "^18.11.10"
   },
   "scripts": {
-    "start": "cd 07 && tsc ./app.ts && node ./app.js",
+    "start": "cd 08 && tsc ./app.ts && node ./app.js",
     "test": "jest"
   },
   "repository": {
