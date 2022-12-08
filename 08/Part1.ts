@@ -14,48 +14,50 @@ export class Day08Part1 implements IPuzzle<number> {
       return true;
     }
 
-    let isTreeVisible = true;
+    const heightOfThisTree = wood[x][y];
+    const lines: number[][] = [];
+
+    // Up
+    const up: number[] = [];
     for (let i = 0; i < x; i++) {
-      if (wood[i][y] >= wood[x][y]) {
-        isTreeVisible = false;
-      }
+      up.push(wood[i][y]);
     }
+    lines.push(up);
 
-    if (isTreeVisible) {
-      return true;
-    }
-
-    isTreeVisible = true;
+    // Down
+    const down: number[] = [];
     for (let i = x + 1; i < wood.length; i++) {
-      if (wood[i][y] >= wood[x][y]) {
-        isTreeVisible = false;
-      }
+      down.push(wood[i][y]);
     }
+    lines.push(down);
 
-    if (isTreeVisible) {
-      return true;
-    }
-
-    isTreeVisible = true;
+    // Left
+    const left: number[] = [];
     for (let i = 0; i < y; i++) {
-      if (wood[x][i] >= wood[x][y]) {
-        isTreeVisible = false;
-      }
+      left.push(wood[x][i]);
     }
+    lines.push(left);
 
-    if (isTreeVisible) {
-      return true;
-    }
-
-    isTreeVisible = true;
+    // Right
+    const right: number[] = [];
     for (let i = y + 1; i < wood[x].length; i++) {
-      if (wood[x][i] >= wood[x][y]) {
-        isTreeVisible = false;
-      }
+      right.push(wood[x][i]);
     }
+    lines.push(right);
 
-    if (isTreeVisible) {
-      return true;
+    for (let l in lines) {
+      const line = lines[l];
+      let isTreeVisible = true;
+
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] >= heightOfThisTree) {
+          isTreeVisible = false;
+        }
+      }
+
+      if (isTreeVisible) {
+        return true;
+      }
     }
 
     return false;
@@ -64,6 +66,7 @@ export class Day08Part1 implements IPuzzle<number> {
   solve(data: string[]): number {
     const parser = new Parser();
     var wood = parser.parse(data);
+
     let visibleTreeCount = 0;
 
     for (let x = 0; x < wood.length; x++) {
@@ -73,8 +76,6 @@ export class Day08Part1 implements IPuzzle<number> {
         }
       }
     }
-
-    console.log(wood);
 
     return visibleTreeCount;
   }
