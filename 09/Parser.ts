@@ -4,7 +4,7 @@ export class Parser {
   parse(data: string[]): Instruction[] {
     const instructions: Instruction[] = [];
 
-    for (let index in data.filter(item => item !== "")) {
+    for (let index in data.filter((item) => item !== "")) {
       const line = data[index];
       const token = line.split(" ");
 
