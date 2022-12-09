@@ -14,6 +14,6 @@ describe("Day 08 sample", () => {
 
   test("part2 (main sample)", () => {
     const result = part2.solve(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe(8);
   });
 });
