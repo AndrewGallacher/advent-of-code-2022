@@ -28,6 +28,6 @@ describe("Day 09 input", () => {
 
   test("part2", () => {
     const result = part2.solve(input);
-    expect(result).toBe(-1);
+    expect(result).toBe(2504);
   });
 });

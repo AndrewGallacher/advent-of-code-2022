@@ -3,21 +3,21 @@ import { Position } from "./Position";
 
 export function moveHead(
   startingPosition: Position,
-  instruction: Instruction
+  direction: string
 ): Position {
   let rowOffset = 0;
   let columnOffset = 0;
 
-  if (instruction.direction === "U") {
-    rowOffset += instruction.length;
-  } else if (instruction.direction === "D") {
-    rowOffset -= instruction.length;
-  } else if (instruction.direction === "L") {
-    columnOffset -= instruction.length;
-  } else if (instruction.direction === "R") {
-    columnOffset += instruction.length;
+  if (direction === "U") {
+    rowOffset++;
+  } else if (direction === "D") {
+    rowOffset--;
+  } else if (direction === "L") {
+    columnOffset--;
+  } else if (direction === "R") {
+    columnOffset++;
   } else {
-    throw new Error(`Invalid instruction ${instruction}`);
+    throw new Error(`Invalid instruction ${direction}`);
   }
 
   return new Position(
@@ -44,15 +44,44 @@ export function moveTail(
   const rowDifference = headPosition.row - tailPosition.row;
   const columnDifference = headPosition.column - tailPosition.column;
 
-  if (absoluteValue(rowDifference) > 1) {
-    newColumn = headPosition.column;
-    newRow += rowDifference / absoluteValue(rowDifference);
-  } else if (absoluteValue(columnDifference) > 1) {
-    newRow = headPosition.row;
-    newColumn += columnDifference / absoluteValue(columnDifference);
+  let columnOffset = 0;
+  if (columnDifference !== 0) {
+    columnOffset = columnDifference > 0 ? 1 : -1;
   }
 
-  return new Position(newRow, newColumn);
+  let rowOffset = 0;
+  if (rowDifference !== 0) {
+    rowOffset = rowDifference > 0 ? 1 : -1;
+  }
+
+  if (absoluteValue(columnDifference) > 2) {
+    throw new Error("Horizontal gap is too big");
+  }
+
+  if (absoluteValue(rowDifference) > 2) {
+    throw new Error("Verical gap is too big");
+  }
+
+  // // Same row
+  // if (rowDifference === 0) {
+  //   return new Position(tailPosition.row, tailPosition.column + columnOffset);
+  // }
+
+  // // Same column
+  // if (columnDifference === 0) {
+  //   return new Position(tailPosition.row + rowOffset, tailPosition.column);
+  // }
+
+  // if (absoluteValue(rowDifference) > 1) {
+  //   newColumn = headPosition.column;
+  //   newRow = headPosition.row - rowDifference / absoluteValue(rowDifference);
+  // } else if (absoluteValue(columnDifference) > 1) {
+  //   newRow = headPosition.row;
+  //   newColumn =
+  //     headPosition.column - columnDifference / absoluteValue(columnDifference);
+  // }
+
+  return new Position(newRow + rowOffset, newColumn + columnOffset);
 }
 
 export function isAdjacent(
@@ -63,6 +92,14 @@ export function isAdjacent(
   const columnDifference = absoluteValue(
     headPosition.column - tailPosition.column
   );
+
+  // if (rowDifference > 1 && columnDifference > 1) {
+  //  throw new Error("Diagonal gap too big");
+  // }
+
+  if (rowDifference > 2 || columnDifference > 2) {
+    throw new Error("Any gap too big");
+  }
 
   return rowDifference < 2 && columnDifference < 2;
 }
