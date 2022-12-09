@@ -7,14 +7,15 @@ const part1 = new Day09Part1();
 const part2 = new Day09Part2();
 
 // Get the data
-const sample = getData("sample");
+const sample1 = getData("sample1");
+const sample2 = getData("sample2");
 const input = getData("input");
 
 // Solve
-const samplePart1Result = part1.solve(sample);
-const samplePart2Result = 0;// part2.solve(sample);
+const samplePart1Result = part1.solve(sample1);
+const samplePart2Result = part2.solve(sample2);
 const inputPart1Result = part1.solve(input);
-const inputPart2Result = 0;// part2.solve(input);
+const inputPart2Result = part2.solve(input);
 
 // Display results
 console.log();
