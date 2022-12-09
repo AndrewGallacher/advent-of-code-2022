@@ -1,36 +1,28 @@
-// Day 1
-import * as fs from "fs";
+// app.ts
+import { getData } from "../src/common";
+import { Day01Part1 } from "./Part1";
+import { Day01Part2 } from "./Part2";
 
-const getData = (fileName: string): string[] => {
-  let fileContent = fs.readFileSync(fileName, "utf8");
-  return fileContent.split("\n");
-};
+const part1 = new Day01Part1();
+const part2 = new Day01Part2();
 
-// read input file
-const filename = "input";
-const data = getData(filename);
+// Get the data
+const sample = getData("sample");
+const input = getData("input");
 
-console.log("** START **");
+// Solve
+const samplePart1Result = part1.solve(sample);
+const samplePart2Result = part2.solve(sample);
+const inputPart1Result = part1.solve(input);
+const inputPart2Result = part2.solve(input);
 
-let elf = 1;
-let totalCalories = 0;
-let calorieTotals: number[] = [];
+// Display results
+console.log();
+console.log("SAMPLE");
+console.log(`Part 1: ${samplePart1Result}`);
+console.log(`Part 2: ${samplePart2Result}`);
 
-data.forEach((item) => {
-  if (item === "") {
-    elf++;
-    calorieTotals.push(totalCalories);
-    totalCalories = 0;
-  } else {
-    totalCalories += parseInt(item);
-  }
-});
-
-calorieTotals.sort((a, b) => (a < b ? 1 : -1));
-const maximumTotalCalories =
-  calorieTotals[0] + calorieTotals[1] + calorieTotals[2];
-
-console.log(
-  `Top three elves have a total of ${maximumTotalCalories} calories.`
-);
-console.log("** END **");
+console.log();
+console.log("INPUT");
+console.log(`Part 1: ${inputPart1Result}`);
+console.log(`Part 2: ${inputPart2Result}`);
