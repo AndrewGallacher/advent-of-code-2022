@@ -1,84 +1,28 @@
-// Day 2
-import * as fs from "fs";
+// app.ts
+import { getData } from "../src/common";
+import { Day02Part1 } from "./Part1";
+import { Day02Part2 } from "./Part2";
 
-const getData = (fileName: string): string[] => {
-  let fileContent = fs.readFileSync(fileName, "utf8");
-  return fileContent.split("\n");
-};
+const part1 = new Day02Part1();
+const part2 = new Day02Part2();
 
-const getScore = (opponent: string, result: string): number => {
-  let win = 6;
-  let draw = 3;
-  let loss = 0;
-  let rock = 1;
-  let paper = 2;
-  let scissors = 3;
+// Get the data
+const sample = getData("sample");
+const input = getData("input");
 
-  // I want to lose
-  if (result === "X") {
-    if (opponent == "A") {
-      // I play scissors (3)
-      return scissors + loss;
-    }
-    if (opponent == "B") {
-      // I play rock
-      return rock + loss;
-    }
-    if (opponent == "C") {
-      // I play paper
-      return paper + loss;
-    }
-    throw new Error(`Opponent play ${opponent} is not valid`);
-  }
+// Solve
+const samplePart1Result = part1.solve(sample);
+const samplePart2Result = part2.solve(sample);
+const inputPart1Result = part1.solve(input);
+const inputPart2Result = part2.solve(input);
 
-  // I want to draw
-  if (result === "Y") {
-    if (opponent == "A") {
-      return rock + draw;
-    }
-    if (opponent == "B") {
-      return paper + draw;
-    }
-    if (opponent == "C") {
-      return scissors + draw;
-    }
-    throw new Error(`Opponent play ${opponent} is not valid`);
-  }
+// Display results
+console.log();
+console.log("SAMPLE");
+console.log(`Part 1: ${samplePart1Result}`);
+console.log(`Part 2: ${samplePart2Result}`);
 
-  // I want to win
-  if (result === "Z") {
-    if (opponent == "A") {
-      return paper + win;
-    }
-    if (opponent == "B") {
-      return scissors + win;
-    }
-    if (opponent == "C") {
-      return rock + win;
-    }
-    throw new Error(`Opponent play ${opponent} is not valid`);
-  }
-
-  throw new Error(`Result ${result} is not valid`);
-};
-
-// read input file
-const filename = "input";
-const data = getData(filename);
-
-console.log("** START **");
-
-console.log(data);
-
-let totalScore = 0;
-data.forEach((item) => {
-  if (item !== "") {
-    console.log(item);
-    const play = item.split(" ");
-    const score = getScore(play[0], play[1]);
-    totalScore += score;
-  }
-});
-
-console.log(`Total score: ${totalScore}`);
-console.log("** END **");
+console.log();
+console.log("INPUT");
+console.log(`Part 1: ${inputPart1Result}`);
+console.log(`Part 2: ${inputPart2Result}`);
