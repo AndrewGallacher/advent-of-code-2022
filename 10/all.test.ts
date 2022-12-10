@@ -10,7 +10,7 @@ const input = getData("10/input");
 describe("Day 10 sample", () => {
   test("part1 (main sample)", () => {
     const result = part1.solve(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe(13140);
   });
 
   test("part2 (main sample)", () => {
@@ -22,7 +22,7 @@ describe("Day 10 sample", () => {
 describe("Day 10 input", () => {
   test("part1", () => {
     const result = part1.solve(input);
-    expect(result).toBe(-1);
+    expect(result).toBe(15120);
   });
 
   test("part2", () => {
