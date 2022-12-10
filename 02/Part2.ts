@@ -71,6 +71,7 @@ export class Day02Part2 implements IPuzzle<number> {
       }
     });
 
+    // RKPJBPLA
     return totalScore;
   }
 }
