@@ -2,6 +2,21 @@
 import { IPuzzle } from "../src/IPuzzle";
 
 export class Day10Part2 implements IPuzzle<number> {
+  isVisible(x: number, position: number): boolean {
+    if (x === position) {
+      return true;
+    }
+
+    if (x === position - 1) {
+      return true;
+    }
+    if (x === position + 1) {
+      return true;
+    }
+
+    return false;
+  }
+
   solve(data: string[]): number {
     // 0 = initial position, N = aftre cycle N
     const xRegister: number[] = [];
@@ -25,12 +40,28 @@ export class Day10Part2 implements IPuzzle<number> {
         }
       });
 
-    let totalSignalStrength: number = 0;
-    const cyclesOfInterest: number[] = [20, 60, 100, 140, 180, 220];
-    cyclesOfInterest.forEach((cycle) => {
-      totalSignalStrength += cycle * xRegister[cycle - 1];
-    });
+    console.log("----------------------------------------");
 
-    return totalSignalStrength;
+    let cycle = 0;
+    let line = "";
+    let count = 0;
+    while (cycle < 240) {
+      if (this.isVisible(xRegister[cycle], cycle % 40)) {
+        line += "#";
+      } else {
+        line += " ";
+      }
+
+      cycle++;
+      if (cycle % 40 === 0) {
+        console.log(line);
+        line = "";
+      }
+    }
+
+    console.log("----------------------------------------");
+    console.log();
+
+    return 0;
   }
 }

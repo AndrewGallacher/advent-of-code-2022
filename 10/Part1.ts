@@ -26,10 +26,11 @@ export class Day10Part1 implements IPuzzle<number> {
       });
 
     let totalSignalStrength: number = 0;
-    const cyclesOfInterest: number[] = [20, 60, 100, 140, 180, 220];
-    cyclesOfInterest.forEach((cycle) => {
+    let cycle = 20;
+    while (cycle < xRegister.length) {
       totalSignalStrength += cycle * xRegister[cycle - 1];
-    });
+      cycle += 40;
+    }
 
     return totalSignalStrength;
   }
