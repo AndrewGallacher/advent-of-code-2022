@@ -18,6 +18,8 @@ export class Monkey {
    */
   test: Test;
 
+  worryReductionFactor: number;
+
   /**
    *
    */
@@ -26,19 +28,28 @@ export class Monkey {
   /**
    *
    */
-  constructor(items: number[], operation: Operation, test: Test) {
+  constructor(
+    items: number[],
+    operation: Operation,
+    test: Test,
+    worryReductionFactor: number
+  ) {
     this.items = items;
     this.operation = operation;
     this.test = test;
+    this.worryReductionFactor = worryReductionFactor;
     this.inspectionCount = 0;
   }
 
-  inspectItems = (): Throw[] => {
+  inspectItems = (commonFactor: number): Throw[] => {
     const throws: Throw[] = [];
     let monkeyId: number;
 
     this.items.map((item) => {
-      let worryLevel = Math.floor(this.operation.operate(item) / 3);
+      let worryLevel: number = Math.floor(
+        this.operation.operate(item) / this.worryReductionFactor
+      );
+
       if (worryLevel % this.test.divisor === 0) {
         monkeyId = this.test.trueMonkey;
       } else {
@@ -47,7 +58,7 @@ export class Monkey {
 
       this.inspectionCount++;
 
-      throws.push(new Throw(worryLevel, monkeyId));
+      throws.push(new Throw(worryLevel % commonFactor, monkeyId));
     });
 
     this.items = [];

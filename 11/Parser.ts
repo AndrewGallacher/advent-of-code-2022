@@ -3,10 +3,14 @@ import { Operation } from "./Operation";
 import { Test } from "./Test";
 
 export class Parser {
+  worryReductionFactor: number;
+
+  constructor(worryReductionFactor: number) {
+    this.worryReductionFactor = worryReductionFactor;
+  }
+
   parse = (data: string[]): Monkey[] => {
     const monkeys: Monkey[] = [];
-
-    const items: number[] = [];
 
     let i: number = 0;
 
@@ -49,7 +53,7 @@ export class Parser {
 
       let divisor: number;
       if (line.startsWith("  Test: ")) {
-          divisor = parseInt(line.split(" ").pop() ?? "#");
+        divisor = parseInt(line.split(" ").pop() ?? "#");
         line = data[++i];
       } else {
         throw new Error(`Expected test: ${line}`);
@@ -73,20 +77,15 @@ export class Parser {
 
       if (line === "") {
         line = data[++i];
-        // if (operation === null) {
-        //   throw new Error("No operation is defined");
-        // }
-
-        // if (test === null) {
-        //   throw new Error("Test is undefined");
-        // }
       } else {
         throw new Error(`Expected blank line: ${line}`);
       }
 
       test = new Test(divisor, trueMonkey, falseMonkey);
 
-      monkeys.push(new Monkey(items, operation, test));
+      monkeys.push(
+        new Monkey(items, operation, test, this.worryReductionFactor)
+      );
     }
 
     return monkeys;

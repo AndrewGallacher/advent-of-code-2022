@@ -15,7 +15,7 @@ describe("Day 11 sample", () => {
 
   test("part2 (main sample)", () => {
     const result = part2.solve(sample);
-    expect(result).toBe(-1);
+    expect(result).toBe(2713310158);
   });
 });
 
@@ -27,6 +27,6 @@ describe("Day 11 input", () => {
 
   test("part2", () => {
     const result = part2.solve(input);
-    expect(result).toBe(-1);
+    expect(result).toBe(19309892877);
   });
 });

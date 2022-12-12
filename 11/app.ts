@@ -12,9 +12,9 @@ const input = getData("input");
 
 // Solve
 const samplePart1Result = part1.solve(sample);
-const samplePart2Result = 1 || part2.solve(sample);
+const samplePart2Result = part2.solve(sample);
 const inputPart1Result = part1.solve(input);
-const inputPart2Result = 1 || part2.solve(input);
+const inputPart2Result =  part2.solve(input);
 
 // Display results
 console.log();
